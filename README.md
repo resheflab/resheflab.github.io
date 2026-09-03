@@ -15,8 +15,9 @@ minute or two. That's the whole process.
 | `index.html` | Every word on the site. All four sections live here. |
 | `style.css` | How the site looks. Colors, fonts and widths are set once at the top. |
 | `script.js` | Makes the "Menu" button work on phones. Nothing else. |
-| `images/` | Photos. |
-| `bibtex/` | Citation files linked from the publications list. |
+| `images/` | Photos, plus `og-card.png`, the preview shown when the link is shared. |
+| `favicon.svg` `favicon.ico` `apple-touch-icon.png` | The browser-tab icon, in three formats. |
+| `robots.txt` `sitemap.xml` | For search engines. Nothing to change unless pages are added. |
 
 If a `CNAME` file is present, it is what points the site at resheflab.org.
 Don't edit or delete it.
@@ -50,6 +51,11 @@ paper, not guessed:
 
 Whatever symbols a paper uses, spell them out in the small grey
 `pub__notation` line underneath the authors.
+
+**Change the tagline or the description.** The tagline near the top of
+`index.html` also appears twice inside `<head>`, as `description` and as
+`og:description` — that second copy is what Google and Slack show. It is not
+automatic; if you reword the tagline, reword those to match.
 
 **Change a color or a font.** Everything visual is set in the `SETTINGS`
 block at the top of `style.css`. Changing `--accent` there re-tints every
