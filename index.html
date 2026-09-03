@@ -4,75 +4,223 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reshef Lab</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #fafafa;
-      color: #1f2933;
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Helvetica,
-        Arial,
-        sans-serif;
-    }
-
-    .container {
-      text-align: center;
-      padding: 40px 24px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(3rem, 7vw, 5rem);
-      font-weight: 600;
-      letter-spacing: -0.04em;
-      line-height: 1.05;
-      color: #17202a;
-    }
-
-    .affiliations {
-      margin-top: 28px;
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      line-height: 1.8;
-      font-weight: 400;
-      color: #59636e;
-    }
-
-    .coming-soon {
-      margin-top: 52px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #8a939c;
-    }
-  </style>
+  <meta name="description" content="The Reshef Lab develops machine learning methods to quantitatively characterize autoimmunity. Brigham and Women's Hospital, Harvard Medical School, and the Broad Institute of MIT and Harvard.">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <main class="container">
+
+<!-- ============================================================
+     HEADER
+     Stays pinned to the top of the screen. The links jump to the
+     sections further down this file.
+     ============================================================ -->
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__name" href="#about">Reshef Lab</a>
+
+    <!-- This button only appears on phones, and only if JavaScript
+         is on. See script.js. -->
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden>Menu</button>
+
+    <nav class="site-nav" id="site-nav">
+      <a href="#about">About</a>
+      <a href="#people">People</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+
+<main>
+
+  <!-- ============================================================
+       ABOUT  (this is the top of the page)
+       ============================================================ -->
+  <section class="section section--intro" id="about">
     <h1>Reshef Lab</h1>
 
-    <div class="affiliations">
-      <div>Brigham and Women's Hospital</div>
-      <div>Harvard Medical School</div>
-      <div>Broad Institute of MIT and Harvard</div>
+    <p class="affiliations">
+      Brigham and Women's Hospital <span>|</span>
+      Harvard Medical School <span>|</span>
+      Broad Institute of MIT and Harvard
+    </p>
+
+    <p class="tagline">
+      We develop and apply machine learning and statistical methods to
+      quantitatively characterize autoimmunity.
+    </p>
+
+    <p class="join">
+      We are looking for students and postdocs with backgrounds in machine
+      learning, statistics, genomics, or immunology. If you're interested,
+      <a href="#contact">contact us</a> with your CV and a description of a
+      problem you'd want to work on.
+    </p>
+  </section>
+
+
+  <!-- ============================================================
+       PEOPLE
+       To add a person: copy one whole <div class="person"> block,
+       paste it below the last one, and change the photo, name and
+       text. Put the new photo in the images/ folder.
+       ============================================================ -->
+  <section class="section" id="people">
+    <h2>People</h2>
+
+    <div class="person">
+      <img class="person__photo" src="images/yakir-reshef.jpg"
+           alt="Yakir Reshef" width="700" height="979">
+
+      <div class="person__text">
+        <h3><a href="https://yakirr.github.io">Yakir Reshef</a></h3>
+
+        <p>
+          Yakir completed a B.A. in mathematics at Harvard College followed
+          by a Fulbright in probability theory at the Weizmann Institute of
+          Science; a PhD in computer science at Harvard working with Ryan
+          Adams, Michael Mitzenmacher, Alkes Price, and Pardis Sabeti; and an
+          MD from Harvard Medical School. He then completed residency in
+          internal medicine and fellowship training in rheumatology at
+          Brigham and Women's Hospital, where he worked with Soumya
+          Raychaudhuri. Yakir likes playing the violin, hiking, reading
+          fiction, and trying to explain complicated things to children.
+        </p>
+
+        <p class="person__more">
+          <a href="https://yakirr.github.io">Full CV and publication list</a>
+        </p>
+      </div>
     </div>
 
-    <div class="coming-soon">
-      Coming soon
-    </div>
-  </main>
+  </section>
+
+
+  <!-- ============================================================
+       PUBLICATIONS
+       To add a paper: copy one whole <article class="pub"> block and
+       edit the title, authors, journal and links.
+
+       The symbols in the author lists mean something specific:
+         *          co-first author
+         #          co-corresponding author
+         [ ... ]    equal contribution, listed alphabetically
+       Don't change them without checking the paper.
+       ============================================================ -->
+  <section class="section" id="publications">
+    <h2>Publications</h2>
+
+    <p class="section-note">
+      Selected publications. The complete list is on
+      <a href="https://scholar.google.com/citations?user=FnDr9qIAAAAJ&amp;hl=en">Google
+      Scholar</a>.
+    </p>
+
+    <!-- VIMA -->
+    <article class="pub">
+      <h3 class="pub__title">
+        Powerful and accurate case-control analysis of spatial molecular data
+      </h3>
+      <p class="pub__authors">
+        <b>Y Reshef<sup>#</sup></b>, L Sood, M Curtis, L Rumker, D Stein,
+        M Palshikar, S Nayar, A Filer, AH Jonsson, I Korsunsky,
+        S Raychaudhuri<sup>#</sup>
+      </p>
+      <p class="pub__notation"><sup>#</sup> co-corresponding</p>
+      <p class="pub__venue">
+        <i>Nature Methods</i> 2026 (in press)
+      </p>
+      <p class="pub__links">
+        <a href="https://www.biorxiv.org/content/10.1101/2025.02.07.637149v1">pre-print</a>
+        <a href="https://github.com/yakirr/vima">code</a>
+      </p>
+    </article>
+
+    <!-- CNA -->
+    <article class="pub">
+      <h3 class="pub__title">
+        Co-varying neighborhood analysis identifies cell populations
+        associated with phenotypes of interest from single-cell
+        transcriptomics
+      </h3>
+      <p class="pub__authors">
+        <b>[Y Reshef, L Rumker]</b>, J Kang, A Nathan, I Korsunsky, S Asgari,
+        M Murray, DB Moody, S Raychaudhuri
+      </p>
+      <p class="pub__notation">[...] equal contribution</p>
+      <p class="pub__venue">
+        <i>Nature Biotechnology</i> 2021
+      </p>
+      <p class="pub__links">
+        <a href="https://www.nature.com/articles/s41587-021-01066-4">abstract</a>
+        <a href="https://youtu.be/FlFYa79D4dc?t=2405">talk</a>
+        <a href="bibtex/ReshefEtAl2021NatBiotech.txt">bibtex</a>
+        <a href="https://github.com/immunogenomics/cna">python</a>
+        <a href="https://github.com/korsunskylab/rcna">R</a>
+      </p>
+    </article>
+
+    <!-- SLDP -->
+    <article class="pub">
+      <h3 class="pub__title">
+        Detecting genome-wide directional effects of transcription factor
+        binding on polygenic disease risk
+      </h3>
+      <p class="pub__authors">
+        <b>Y Reshef<sup>#</sup></b>, H Finucane, D Kelley, A Gusev, D Kotliar,
+        J Ulirsch, F Hormozdiari, J Nasser, L OConnor, B van de Geijn, P Loh,
+        S Grossman, G Bhatia, S Gazal, P Francesco Palamara, L Pinello,
+        N Patterson, R Adams, A Price<sup>#</sup>
+      </p>
+      <p class="pub__notation"><sup>#</sup> co-corresponding</p>
+      <p class="pub__venue">
+        <i>Nature Genetics</i> 2018
+      </p>
+      <p class="pub__links">
+        <a href="https://www.nature.com/articles/s41588-018-0196-7">abstract</a>
+        <a href="https://rdcu.be/5J94">pdf</a>
+        <a href="https://youtu.be/XEne6yD7zmo?t=2089">talk</a>
+        <a href="bibtex/ReshefEtAl2018tfbs.txt">bibtex</a>
+        <a href="https://github.com/yakirr/sldp">code</a>
+      </p>
+    </article>
+  </section>
+
+
+  <!-- ============================================================
+       CONTACT
+       The email address is written out in words on purpose, so that
+       programs that scrape addresses off web pages don't find it.
+       ============================================================ -->
+  <section class="section" id="contact">
+    <h2>Contact</h2>
+
+    <p class="contact__email">
+      yreshef <span class="contact__at">at</span> broadinstitute.org
+    </p>
+
+    <p class="contact__address">
+      Reshef Lab<br>
+      Veritas Science Center<br>
+      77 Avenue Louis Pasteur<br>
+      Boston, MA 02115
+    </p>
+
+    <p>
+      Prospective students and postdocs: please write to the address above
+      with your CV and a description of a problem you'd want to work on.
+    </p>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Reshef Lab &middot; Brigham and Women's Hospital, Harvard Medical School,
+  and the Broad Institute of MIT and Harvard</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>

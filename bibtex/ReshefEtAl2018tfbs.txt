@@ -1,0 +1,10 @@
+@article{reshef2018detecting,
+  title={Detecting genome-wide directional effects of transcription factor binding on polygenic disease risk},
+  author={Reshef, Yakir A and Finucane, Hilary K and Kelley, David R and Gusev, Alexander and Kotliar, Dylan and Ulirsch, Jacob C and Hormozdiari, Farhad and Nasser, Joseph and O’Connor, Luke and Van De Geijn, Bryce and others},
+  journal={Nature genetics},
+  volume={50},
+  number={10},
+  pages={1483--1493},
+  year={2018},
+  publisher={Nature Publishing Group}
+}

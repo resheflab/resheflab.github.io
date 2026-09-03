@@ -1,0 +1,8 @@
+@article{reshef2021co,
+  title={Co-varying neighborhood analysis identifies cell populations associated with phenotypes of interest from single-cell transcriptomics},
+  author={Reshef, Yakir A and Rumker, Laurie and Kang, Joyce B and Nathan, Aparna and Korsunsky, Ilya and Asgari, Samira and Murray, Megan B and Moody, D and Raychaudhuri, Soumya},
+  journal={Nature Biotechnology},
+  pages={1--9},
+  year={2021},
+  publisher={Nature Publishing Group}
+}

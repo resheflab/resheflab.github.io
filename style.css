@@ -1,0 +1,457 @@
+/* ==========================================================================
+   Reshef Lab — stylesheet
+
+   This file controls how the site looks. It is plain CSS: no build step,
+   no tools to install. Edit it, save it, push it.
+
+   The most useful things to change are in the "SETTINGS" block right below:
+   the colors, the fonts and the width of the text column are all defined
+   once there and used everywhere else in the file.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   SETTINGS
+   Change a value here and it changes everywhere on the site.
+   -------------------------------------------------------------------------- */
+:root {
+  /* Colors */
+  --page-background:  #fcfcfb;  /* the near-white behind everything */
+  --text:             #17181a;  /* body text */
+  --text-quiet:       #6a6d72;  /* affiliations, dates, small print */
+  --accent:           #2b4c8c;  /* links and rules. This is the ONE accent
+                                   color on the site — change this line to
+                                   re-tint the whole page. */
+  --accent-dark:      #1e3868;  /* the accent, darkened, for link hover */
+  --rule:             #e3e4e6;  /* the thin horizontal lines */
+
+  /* Fonts. These are the fonts already installed on the reader's computer:
+     San Francisco on a Mac or iPhone, Segoe UI on Windows, Roboto on
+     Android. The site downloads no fonts, so it cannot break when some font
+     service goes away.
+
+     --font-body is used for everything.
+     --font-label is the same family; it exists only so the small uppercase
+     labels (the header links, the [pdf] tags) are easy to find and change. */
+  --font-body:  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-label: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* WIDTHS. There are two, and they do different jobs.
+
+     --page-width is how wide the whole page gets on a large screen: the
+     header, the horizontal rules, and the outer edge of every section.
+
+     --measure is how wide a *paragraph* is allowed to get. It is much
+     narrower on purpose. Lines longer than roughly 70 characters get hard
+     to read, because the eye loses its place coming back to the left edge.
+     So the page gets wider without the sentences getting longer.
+
+     On a large screen the section headings (People, Publications, Contact)
+     move out into the left margin, which is what fills the extra width. */
+  --page-width:    55rem;
+  --measure:       40rem;
+  --label-column:  12rem;   /* where those headings sit */
+  --column-gap:     3rem;
+
+  /* How tall the pinned header is. Used to stop it covering up a section
+     heading when you jump to that section. */
+  --header-height: 3.5rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   BASE
+   -------------------------------------------------------------------------- */
+* { box-sizing: border-box; }
+
+html {
+  /* Clicking a header link glides down the page instead of snapping. */
+  scroll-behavior: smooth;
+}
+
+/* Readers who have asked their computer for less motion get the snap. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  margin: 0;
+  background: var(--page-background);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;   /* 17px */
+  line-height: 1.65;      /* generous space between lines */
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (min-width: 40em) {
+  body { font-size: 1.125rem; }  /* 18px on tablets and larger */
+}
+
+p { margin: 0 0 1.1em; }
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--rule);
+}
+
+a:hover,
+a:focus {
+  color: var(--accent-dark);
+  text-decoration-color: var(--accent-dark);
+}
+
+img { max-width: 100%; height: auto; }
+
+sup { font-size: 0.7em; line-height: 0; }
+
+
+/* --------------------------------------------------------------------------
+   HEADER
+   Pinned to the top of the window as you scroll.
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--page-background);
+  border-bottom: 1px solid var(--rule);
+}
+
+.site-header__inner {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  min-height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* The lab name in the header. */
+.site-header__name {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--text);
+  text-decoration: none;
+  padding: 0.75rem 0;
+}
+
+.site-header__name:hover { color: var(--accent); }
+
+/* The four section links. Small sans-serif so they stay quieter than the
+   serif text of the page itself. */
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  padding-bottom: 0.75rem;
+  width: 100%;
+}
+
+.site-nav a {
+  font-family: var(--font-label);
+  font-size: 0.75rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-quiet);
+  text-decoration: none;
+}
+
+.site-nav a:hover { color: var(--accent); }
+
+/* The "Menu" button. It is hidden unless JavaScript turns it on, and it is
+   hidden again on screens wide enough to fit all four links. */
+.nav-toggle {
+  font-family: var(--font-label);
+  font-size: 0.75rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-quiet);
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+}
+
+.nav-toggle:hover { color: var(--accent); border-color: var(--accent); }
+
+/* When JavaScript is running, the links start out hidden on a phone and the
+   Menu button opens them. Without JavaScript the links are simply always
+   shown, so the site still works. */
+.js-nav .site-nav { display: none; }
+.js-nav .site-nav.is-open { display: flex; }
+
+/* From this width up, everything fits on one line: no button needed. */
+@media (min-width: 34em) {
+  .site-header__inner { flex-wrap: nowrap; }
+  .nav-toggle { display: none; }
+  .site-nav,
+  .js-nav .site-nav { display: flex; width: auto; padding-bottom: 0; }
+}
+
+
+/* --------------------------------------------------------------------------
+   SECTIONS
+   -------------------------------------------------------------------------- */
+.section {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+
+  /* Leaves room for the pinned header when you jump to this section. */
+  scroll-margin-top: var(--header-height);
+}
+
+@media (min-width: 40em) {
+  .section { padding: 4.5rem 1.5rem; }
+}
+
+/* The first section sits right under the header, so it needs less space
+   above it than the sections further down the page do. */
+.section--intro { padding-top: 2rem; }
+
+@media (min-width: 40em) {
+  .section--intro { padding-top: 2.75rem; }
+}
+
+/* Nothing inside a section grows past a readable line length, even though
+   the section itself is now much wider. */
+.section > * { max-width: var(--measure); }
+
+/* On a laptop-sized screen the section heading moves out into the left
+   margin and the content sits beside it. Below this width everything falls
+   back to one column, stacked, which is what phones and tablets get.
+
+   The intro at the top of the page is left out of this on purpose: its
+   title lines up with the lab name in the header instead. */
+@media (min-width: 62em) {
+  .section:not(.section--intro) {
+    display: grid;
+    grid-template-columns: var(--label-column) minmax(0, 1fr);
+    column-gap: var(--column-gap);
+  }
+
+  .section:not(.section--intro) > * { grid-column: 2; }
+
+  .section:not(.section--intro) > h2 {
+    grid-column: 1;
+    grid-row: 1;
+    margin-bottom: 0;
+  }
+}
+
+/* A thin line above every section heading except the first section. */
+.section + .section { border-top: 1px solid var(--rule); }
+
+h1 {
+  font-weight: 600;
+  font-size: 2.125rem;
+  line-height: 1.15;
+  letter-spacing: -0.028em;   /* large sans text looks better set tight */
+  margin: 0 0 1.25rem;
+}
+
+@media (min-width: 40em) {
+  h1 { font-size: 2.625rem; }
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: -0.015em;
+  margin: 0 0 1.5rem;
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.35rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   ABOUT
+   -------------------------------------------------------------------------- */
+/* The three institutions under the lab name. */
+.affiliations {
+  font-family: var(--font-label);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.9;
+  color: var(--text-quiet);
+  margin-bottom: 2rem;
+
+  /* This one line is allowed to run wider than a paragraph would, so the
+     three institutions fit without wrapping on a laptop. */
+  max-width: none;
+}
+
+/* The upright bars between the institutions. Lighter than the names, but
+   still dark enough to actually see. */
+.affiliations span {
+  color: #b6b9bd;
+  margin: 0 0.3em;
+}
+
+/* The one-sentence description of what the lab does. */
+.tagline {
+  font-size: 1.3125rem;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  margin-bottom: 1.75rem;
+}
+
+@media (min-width: 40em) {
+  .tagline { font-size: 1.4375rem; }
+}
+
+/* The note about openings in the lab, in a dashed box under the tagline. */
+.join {
+  border: 1px dashed var(--accent);
+  border-radius: 2px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0;
+}
+
+
+/* --------------------------------------------------------------------------
+   PEOPLE
+   -------------------------------------------------------------------------- */
+.person { margin-bottom: 0; }
+
+.person__photo {
+  width: 9rem;
+  border-radius: 2px;
+  margin-bottom: 1.25rem;
+  display: block;
+}
+
+/* On wider screens the photo sits to the left of the text. */
+@media (min-width: 34em) {
+  .person {
+    display: flex;
+    gap: 1.75rem;
+    align-items: flex-start;
+  }
+  .person__photo { flex: none; width: 10rem; margin-bottom: 0; }
+  .person__text { flex: 1; }
+}
+
+.person__more {
+  font-family: var(--font-label);
+  font-size: 0.8125rem;
+  margin-bottom: 0;
+}
+
+
+/* --------------------------------------------------------------------------
+   PUBLICATIONS
+   -------------------------------------------------------------------------- */
+/* The "selected publications" line under the heading. */
+.section-note {
+  color: var(--text-quiet);
+  font-size: 0.9375rem;
+  margin-bottom: 2.25rem;
+}
+
+.pub { margin-bottom: 2.5rem; }
+
+.pub:last-child { margin-bottom: 0; }
+
+.pub__title {
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: 0.4rem;
+}
+
+.pub__authors {
+  margin-bottom: 0.2rem;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+
+  /* Runs the author list on, with later lines indented under the first. */
+  padding-left: 1.5rem;
+  text-indent: -1.5rem;
+}
+
+/* The line explaining what * and # and [ ] mean for this paper. */
+.pub__notation {
+  color: var(--text-quiet);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.pub__venue {
+  margin-bottom: 0.5rem;
+  font-size: 0.9375rem;
+  color: var(--text-quiet);
+}
+
+/* The row of [abstract] [pdf] [code] links. The square brackets are drawn
+   by CSS, so don't type them into the HTML. */
+.pub__links {
+  font-family: var(--font-label);
+  font-size: 0.8125rem;
+  margin-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.pub__links a { text-decoration: none; }
+
+.pub__links a::before { content: "["; color: var(--text-quiet); }
+.pub__links a::after  { content: "]"; color: var(--text-quiet); }
+
+.pub__links a:hover { text-decoration: underline; }
+
+
+/* --------------------------------------------------------------------------
+   CONTACT
+   -------------------------------------------------------------------------- */
+.contact__email {
+  font-size: 1.125rem;
+  margin-bottom: 1.5rem;
+}
+
+/* The word "at" standing in for the @ sign. */
+.contact__at {
+  color: var(--text-quiet);
+  font-style: italic;
+}
+
+.contact__address {
+  color: var(--text-quiet);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   FOOTER
+   -------------------------------------------------------------------------- */
+.site-footer {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-label);
+  font-size: 0.75rem;
+  line-height: 1.7;
+  color: var(--text-quiet);
+}
+
+.site-footer p { margin: 0; }
