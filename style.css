@@ -383,7 +383,12 @@ h3 {
 }
 
 .pub__authors {
-  margin-bottom: 0.2rem;
+  margin-bottom: 0;
+
+  /* An author list is a list, not prose, so its lines sit closer together
+     than the paragraphs elsewhere on the page. Same text size, less
+     leading. The same goes for the three lines below it. */
+  line-height: 1.4;
 
   /* Runs the author list on, with later lines indented under the first. */
   padding-left: 1.5rem;
@@ -393,11 +398,13 @@ h3 {
 /* The line explaining what * and # and [ ] mean for this paper. */
 .pub__notation {
   color: var(--text-quiet);
-  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  margin-bottom: 0.45rem;
 }
 
 .pub__venue {
-  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  margin-bottom: 0;
   color: var(--text-quiet);
 }
 
@@ -405,6 +412,7 @@ h3 {
    by CSS, so don't type them into the HTML. */
 .pub__links {
   font-family: var(--font-label);
+  line-height: 1.4;
   margin-bottom: 0;
   display: flex;
   flex-wrap: wrap;
