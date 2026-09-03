@@ -1,4 +1,10 @@
-# resheflab.org
+# Editing this site
+
+Notes for whoever maintains resheflab.org.
+
+This file is deliberately not called `README.md`: GitHub renders a file by
+that name on the repository's front page, and these are working notes rather
+than something visitors should land on.
 
 The Reshef Lab website. Plain HTML and CSS — there is nothing to install,
 nothing to build, and no dependencies to keep up to date.
@@ -18,6 +24,7 @@ minute or two. That's the whole process.
 | `images/` | Photos, plus `og-card.png`, the preview shown when the link is shared. |
 | `favicon.svg` `favicon.ico` `apple-touch-icon.png` | The browser-tab icon, in three formats. |
 | `robots.txt` `sitemap.xml` | For search engines. Nothing to change unless pages are added. |
+| `EDITING.md` | This file. |
 
 If a `CNAME` file is present, it is what points the site at resheflab.org.
 Don't edit or delete it.
